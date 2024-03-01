@@ -10,7 +10,7 @@ import net.labymod.api.configuration.loader.property.ConfigProperty;
 import net.labymod.api.configuration.settings.annotation.SettingSection;
 
 @ConfigName("settings")
-@SpriteTexture("sprite_settings")
+@SpriteTexture("sprite.png")
 public class Configuration extends AddonConfig {
 
   @SpriteSlot(x = 2, y = 1)
