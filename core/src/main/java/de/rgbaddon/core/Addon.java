@@ -1,9 +1,8 @@
-package org.example.core;
+package de.rgbaddon.core;
 
+import de.rgbaddon.core.listener.ChatListener;
 import net.labymod.api.addon.LabyAddon;
 import net.labymod.api.models.addon.annotation.AddonMain;
-import org.example.core.commands.ExamplePingCommand;
-import org.example.core.listener.ExampleGameTickListener;
 
 @AddonMain
 public class Addon extends LabyAddon<Configuration> {
@@ -12,8 +11,7 @@ public class Addon extends LabyAddon<Configuration> {
   protected void enable() {
     this.registerSettingCategory();
 
-    this.registerListener(new ExampleGameTickListener(this));
-    this.registerCommand(new ExamplePingCommand());
+    this.registerListener(new ChatListener(this));
 
     this.logger().info("\n__________  __________________    _____       .___  .___             \n"
         + "\\______   \\/  _____/\\______   \\  /  _  \\    __| _/__| _/____   ____  \n"

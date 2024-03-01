@@ -1,0 +1,21 @@
+{
+  "rgbaddon": {
+    "settings": {
+      "name": "RGBAddon",
+      "enabled": {
+        "name": "Enabled"
+      },
+      "header": {
+        "chat": {
+          "name": "Chat"
+        }
+      },
+      "copyChatSubSetting": {
+        "name": "ChatCopy",
+        "copyPlayerName": {
+          "name": "Copy Name"
+        }
+      }
+    }
+  }
+}
