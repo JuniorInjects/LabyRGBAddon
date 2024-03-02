@@ -3,7 +3,7 @@
     "settings": {
       "name": "RGBAddon",
       "enabled": {
-        "name": "Enabled"
+        "name": "Aktivierung"
       },
       "header": {
         "chat": {
@@ -11,13 +11,10 @@
         }
       },
       "copyChatSubSetting": {
-        "name": "ChatCopy",
+        "name": "Nachricht Kopieren",
         "copyPlayerName": {
-          "name": "Copy Name"
+          "name": "Namen mitkopieren"
         }
-      },
-      "chatTime": {
-        "name": "Chat Time"
       }
     }
   }

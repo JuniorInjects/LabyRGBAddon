@@ -1,4 +1,4 @@
-package de.rgbaddon.core.settings.sub;
+package rgbaddon.core.settings.sub;
 
 import net.labymod.api.client.gui.screen.widget.widgets.input.KeybindWidget.KeyBindSetting;
 import net.labymod.api.client.gui.screen.widget.widgets.input.SwitchWidget.SwitchSetting;

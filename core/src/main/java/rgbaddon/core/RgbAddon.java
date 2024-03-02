@@ -1,11 +1,11 @@
-package de.rgbaddon.core;
+package rgbaddon.core;
 
-import de.rgbaddon.core.listener.ChatListener;
+import rgbaddon.core.listener.ChatListener;
 import net.labymod.api.addon.LabyAddon;
 import net.labymod.api.models.addon.annotation.AddonMain;
 
 @AddonMain
-public class Addon extends LabyAddon<Configuration> {
+public class RgbAddon extends LabyAddon<Configuration> {
 
   @Override
   protected void enable() {

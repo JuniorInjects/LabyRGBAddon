@@ -10,7 +10,7 @@ version = "2.0"
 java.toolchain.languageVersion.set(JavaLanguageVersion.of(17))
 
 labyMod {
-    defaultPackageName = "de.rgbaddon" //change this to your main package name (used by all modules)
+    defaultPackageName = "rgbaddon" //change this to your main package name (used by all modules)
     addonInfo {
         namespace = "rgbaddon"
         displayName = "RgbAddon"
