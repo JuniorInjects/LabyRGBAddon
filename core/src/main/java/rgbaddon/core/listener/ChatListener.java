@@ -36,12 +36,30 @@ public class ChatListener {
           copyText = message.substring(playerName.length() + 2);
         }
 
+        if(config.copyChatSubSetting.copyChatTime()) {
+          copyText = getTime() + " " + copyText;
+        }
+
         textComponent = Component.text()
             .append(Component.text(" [COPY]", NamedTextColor.AQUA)
                 .clickEvent(ClickEvent.copyToClipboard(copyText)))
             .build();
 
         event.message().append(textComponent);
+
+        if(config.chatTime.isEnabled()) {
+          Component textCom;
+          textCom = Component.text().append(Component.text(getTime() + " ", NamedTextColor.GREEN)).build();
+          textCom.append(event.message());
+          event.setMessage(textCom);
+        }
+      }
+    }else {
+      if(config.chatTime.isEnabled()) {
+        Component textComponent;
+        textComponent = Component.text().append(Component.text(getTime() + " ", NamedTextColor.GREEN)).build();
+        textComponent.append(event.message());
+        event.setMessage(textComponent);
       }
     }
   }
@@ -50,7 +68,7 @@ public class ChatListener {
     return formatedTime(System.currentTimeMillis());
   }
 
-  private String formatedTime(final Long millis){
+  private String formatedTime(final Long millis) {
     //dd.MM.yyyy HH:mm:ss
     String format = "";
     if(config.chatTime.getDisplayDay())
@@ -72,7 +90,10 @@ public class ChatListener {
       format = format + " ";
 
     if(config.chatTime.getDisplayHours())
-      format = "HH";
+      if(format.isEmpty()) {
+        format = "HH";
+      }else
+        format = format + ".HH";
     if(config.chatTime.getDisplayMinutes()) {
       if(format.isEmpty()) {
         format = "mm";

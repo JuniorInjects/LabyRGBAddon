@@ -14,10 +14,34 @@
         "name": "ChatCopy",
         "copyPlayerName": {
           "name": "Copy Name"
+        },
+        "copyChatTime": {
+          "name": "Copy ChatTime"
         }
       },
       "chatTime": {
-        "name": "Chat Time"
+        "name": "Chat Time",
+        "useBrackets": {
+          "name": "Brackets"
+        },
+        "displaySecounds": {
+          "name": "Display secound"
+        },
+        "displayMinutes": {
+          "name": "Display minute"
+        },
+        "displayHours": {
+          "name": "display hour"
+        },
+        "displayDay": {
+          "name": "display day"
+        },
+        "displayMonth": {
+          "name": "Display month"
+        },
+        "displayYear": {
+          "name": "Display year"
+        }
       }
     }
   }

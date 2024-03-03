@@ -19,8 +19,14 @@ public class CopyChatSubSetting extends Config {
   @SwitchSetting
   private final ConfigProperty<Boolean> copyPlayerName = new ConfigProperty<>(true);
 
+  @SwitchSetting
+  private final ConfigProperty<Boolean> copyChatTime = new ConfigProperty<>(true);
+
   public boolean copyPlayerName() {
     return this.copyPlayerName.get();
+  }
+  public boolean copyChatTime() {
+    return this.copyChatTime.get();
   }
 
   public boolean isEnabled() {
