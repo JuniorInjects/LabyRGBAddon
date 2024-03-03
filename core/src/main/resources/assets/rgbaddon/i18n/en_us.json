@@ -8,6 +8,9 @@
       "header": {
         "chat": {
           "name": "Chat"
+        },
+        "render": {
+          "name": "Render"
         }
       },
       "copyChatSubSetting": {
@@ -42,6 +45,9 @@
         "displayYear": {
           "name": "Display year"
         }
+      },
+      "fullbright": {
+        "name": "Fullbright"
       }
     }
   }

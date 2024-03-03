@@ -25,8 +25,17 @@ public class Configuration extends AddonConfig {
   @SwitchSetting
   public ChatTimeSubSetting chatTime = new ChatTimeSubSetting();
 
+  @SettingSection("render")
+  @SpriteSlot(x = 2, y = 2)
+  @SwitchSetting
+  private final ConfigProperty<Boolean> fullbright = new ConfigProperty<>(true);
+
   @Override
   public ConfigProperty<Boolean> enabled() {
     return this.enabled;
+  }
+
+  public boolean getFullbright() {
+    return this.fullbright.get();
   }
 }

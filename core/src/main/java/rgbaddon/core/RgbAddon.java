@@ -1,8 +1,10 @@
 package rgbaddon.core;
 
+import net.labymod.api.event.Subscribe;
 import rgbaddon.core.listener.ChatListener;
 import net.labymod.api.addon.LabyAddon;
 import net.labymod.api.models.addon.annotation.AddonMain;
+import rgbaddon.core.listener.UpdateLightmapTextureEvent;
 
 @AddonMain
 public class RgbAddon extends LabyAddon<Configuration> {
@@ -24,5 +26,12 @@ public class RgbAddon extends LabyAddon<Configuration> {
   @Override
   protected Class<Configuration> configurationClass() {
     return Configuration.class;
+  }
+
+  @Subscribe
+  public void onUpdateLighmapTexture(UpdateLightmapTextureEvent event) {
+    if (this.configuration().getFullbright()) {
+      event.setCancelled(true);
+    }
   }
 }
