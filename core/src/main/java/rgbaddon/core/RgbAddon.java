@@ -1,10 +1,13 @@
 package rgbaddon.core;
 
+import net.labymod.api.client.entity.player.tag.PositionType;
 import net.labymod.api.event.Subscribe;
+import rgbaddon.core.imports.TNTTimeTag;
 import rgbaddon.core.listener.ChatListener;
 import net.labymod.api.addon.LabyAddon;
 import net.labymod.api.models.addon.annotation.AddonMain;
 import rgbaddon.core.listener.UpdateLightmapTextureEvent;
+import rgbaddon.core.widgets.NearbyWidget;
 
 @AddonMain
 public class RgbAddon extends LabyAddon<Configuration> {
@@ -14,6 +17,9 @@ public class RgbAddon extends LabyAddon<Configuration> {
     this.registerSettingCategory();
 
     this.registerListener(new ChatListener(this));
+    this.labyAPI().tagRegistry().register("tnttag", PositionType.ABOVE_NAME, new TNTTimeTag(this));
+
+    this.labyAPI().hudWidgetRegistry().register(new NearbyWidget());
 
     this.logger().info("\n__________  __________________    _____       .___  .___             \n"
         + "\\______   \\/  _____/\\______   \\  /  _  \\    __| _/__| _/____   ____  \n"

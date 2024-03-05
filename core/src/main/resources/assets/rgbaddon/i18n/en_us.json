@@ -15,6 +15,7 @@
       },
       "copyChatSubSetting": {
         "name": "ChatCopy",
+        "description": "Copy any message from the chat.",
         "copyPlayerName": {
           "name": "Copy Name"
         },
@@ -24,6 +25,7 @@
       },
       "chatTime": {
         "name": "Chat Time",
+        "description": "Display the current time infront of every message in the chat.",
         "useBrackets": {
           "name": "Brackets"
         },
@@ -47,7 +49,30 @@
         }
       },
       "fullbright": {
-        "name": "Fullbright"
+        "name": "Fullbright",
+        "description": "Disable darkness."
+      },
+      "tntTimerSubSetting": {
+        "name" : "TNT Timer",
+        "description": "Display a timer above every tnt when it will explode.",
+        "enabled": {
+          "name": "Enabled"
+        },
+        "colored": {
+          "name": "colored"
+        }
+      },
+      "antiChatClear": {
+        "name": "Anti Chatclear",
+        "description": "Removes empty lines from the chat."
+      },
+      "stackSameMessage": {
+        "name": "Stack same message"
+      }
+    },
+    "hudWidget": {
+      "nearby": {
+        "name": "nearby Player"
       }
     }
   }

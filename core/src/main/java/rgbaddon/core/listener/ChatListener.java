@@ -23,6 +23,12 @@ public class ChatListener {
   @Subscribe
   public void onChatReceive(ChatReceiveEvent event) {
     ChatMessage chatMessage = event.chatMessage();
+    if(config.getAntiChatClear()) {
+      if(chatMessage.getOriginalPlainText().isEmpty() || chatMessage.getOriginalPlainText().isBlank()) {
+        event.setCancelled(true);
+        return;
+      }
+    }
     if(config.copyChatSubSetting.isEnabled()) {
       if (chatMessage.getSenderProfile() != null) {
         String playerName = chatMessage.getSenderProfile().getUsername();
@@ -93,7 +99,7 @@ public class ChatListener {
       if(format.isEmpty()) {
         format = "HH";
       }else
-        format = format + ".HH";
+        format = format + "HH";
     if(config.chatTime.getDisplayMinutes()) {
       if(format.isEmpty()) {
         format = "mm";
