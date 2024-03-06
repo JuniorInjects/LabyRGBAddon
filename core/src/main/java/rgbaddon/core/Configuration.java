@@ -1,5 +1,6 @@
 package rgbaddon.core;
 
+import rgbaddon.core.settings.sub.AntiRageSubSetting;
 import rgbaddon.core.settings.sub.ChatTimeSubSetting;
 import rgbaddon.core.settings.sub.CopyChatSubSetting;
 import net.labymod.api.addon.AddonConfig;
@@ -29,6 +30,9 @@ public class Configuration extends AddonConfig {
   private final ConfigProperty<Boolean> antiChatClear = new ConfigProperty<>(true);
   @SpriteSlot(y = 2)
   private final ConfigProperty<Boolean> stackSameMessage = new ConfigProperty<>(true);
+  @SpriteSlot(x = 1, y = 1)
+  @SwitchSetting
+  public AntiRageSubSetting antiRage = new AntiRageSubSetting();
 
   @SettingSection("render")
   @SpriteSlot(x = 4, y = 2)

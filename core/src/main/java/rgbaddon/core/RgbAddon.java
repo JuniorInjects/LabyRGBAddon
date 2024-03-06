@@ -6,6 +6,7 @@ import rgbaddon.core.imports.TNTTimeTag;
 import rgbaddon.core.listener.ChatListener;
 import net.labymod.api.addon.LabyAddon;
 import net.labymod.api.models.addon.annotation.AddonMain;
+import rgbaddon.core.listener.ChatSendListener;
 import rgbaddon.core.listener.UpdateLightmapTextureEvent;
 import rgbaddon.core.widgets.NearbyWidget;
 
@@ -17,6 +18,7 @@ public class RgbAddon extends LabyAddon<Configuration> {
     this.registerSettingCategory();
 
     this.registerListener(new ChatListener(this));
+    this.registerListener(new ChatSendListener(this));
     this.labyAPI().tagRegistry().register("tnttag", PositionType.ABOVE_NAME, new TNTTimeTag(this));
 
     this.labyAPI().hudWidgetRegistry().register(new NearbyWidget());

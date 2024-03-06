@@ -67,12 +67,31 @@
         "description": "Removes empty lines from the chat."
       },
       "stackSameMessage": {
-        "name": "Stack same message"
+        "name": "Stack same message",
+        "description": "stack same messages in chat"
+      },
+      "antiRage": {
+        "name": "Anti rage",
+        "description": "stop you from sending bad messages",
+        "badWords": {
+          "name": "Bad words"
+        }
       }
     },
     "hudWidget": {
       "nearby": {
-        "name": "nearby Player"
+        "name": "nearby Player",
+        "description": "displays all players nearby"
+      }
+    },
+    "notification": {
+      "antiRage": {
+        "title": {
+          "name": "Anti rage"
+        },
+        "text": {
+          "name": "we stopped you from raging"
+        }
       }
     }
   }
