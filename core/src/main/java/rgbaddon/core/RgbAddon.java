@@ -2,6 +2,7 @@ package rgbaddon.core;
 
 import net.labymod.api.client.entity.player.tag.PositionType;
 import net.labymod.api.event.Subscribe;
+import rgbaddon.core.imports.RgbAddonTag;
 import rgbaddon.core.imports.TNTTimeTag;
 import rgbaddon.core.listener.ChatListener;
 import net.labymod.api.addon.LabyAddon;
@@ -20,6 +21,8 @@ public class RgbAddon extends LabyAddon<Configuration> {
     this.registerListener(new ChatListener(this));
     this.registerListener(new ChatSendListener(this));
     this.labyAPI().tagRegistry().register("tnttag", PositionType.ABOVE_NAME, new TNTTimeTag(this));
+    this.labyAPI().tagRegistry().register("rgbaddontag", PositionType.ABOVE_NAME, new RgbAddonTag(this));
+
 
     this.labyAPI().hudWidgetRegistry().register(new NearbyWidget());
 

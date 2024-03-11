@@ -1,5 +1,7 @@
 package rgbaddon.core;
 
+import net.labymod.api.client.gui.screen.widget.widgets.input.ButtonWidget.ButtonSetting;
+import net.labymod.api.configuration.settings.Setting;
 import rgbaddon.core.settings.sub.AntiRageSubSetting;
 import rgbaddon.core.settings.sub.ChatTimeSubSetting;
 import rgbaddon.core.settings.sub.CopyChatSubSetting;
@@ -11,6 +13,10 @@ import net.labymod.api.configuration.loader.annotation.SpriteTexture;
 import net.labymod.api.configuration.loader.property.ConfigProperty;
 import net.labymod.api.configuration.settings.annotation.SettingSection;
 import rgbaddon.core.settings.sub.TntTimerSubSetting;
+import java.awt.*;
+import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 
 @ConfigName("settings")
 @SpriteTexture("sprite")
@@ -19,6 +25,14 @@ public class Configuration extends AddonConfig {
   @SpriteSlot(x = 5)
   @SwitchSetting
   private final ConfigProperty<Boolean> enabled = new ConfigProperty<>(true);
+
+  @SettingSection("Addon")
+  @ButtonSetting
+  public void discord(Setting setting) throws URISyntaxException, IOException {
+    if (Desktop.isDesktopSupported() && Desktop.getDesktop().isSupported(Desktop.Action.BROWSE)) {
+      Desktop.getDesktop().browse(new URI("https://discord.com/invite/J44t7xQFEX"));
+    }
+  }
 
   @SettingSection("chat")
   @SpriteSlot(x = 2)

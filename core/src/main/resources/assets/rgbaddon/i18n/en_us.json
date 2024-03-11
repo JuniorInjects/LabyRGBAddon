@@ -5,12 +5,19 @@
       "enabled": {
         "name": "Enabled"
       },
+      "discord": {
+        "name": "Click to join Discord",
+        "text": "Join"
+      },
       "header": {
         "chat": {
           "name": "Chat"
         },
         "render": {
           "name": "Render"
+        },
+        "addon": {
+          "name": "Addon"
         }
       },
       "copyChatSubSetting": {
