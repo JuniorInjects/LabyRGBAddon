@@ -1,7 +1,14 @@
 package rgbaddon.core;
 
+import net.labymod.api.Laby;
+import net.labymod.api.client.component.Component;
+import net.labymod.api.client.gui.icon.Icon;
 import net.labymod.api.client.gui.screen.widget.widgets.input.ButtonWidget.ButtonSetting;
 import net.labymod.api.configuration.settings.Setting;
+import net.labymod.api.notification.Notification;
+import net.labymod.api.notification.Notification.Builder;
+import net.labymod.api.notification.Notification.Type;
+import net.labymod.api.util.I18n;
 import rgbaddon.core.settings.sub.AntiRageSubSetting;
 import rgbaddon.core.settings.sub.ChatTimeSubSetting;
 import rgbaddon.core.settings.sub.CopyChatSubSetting;
@@ -12,11 +19,13 @@ import net.labymod.api.configuration.loader.annotation.SpriteSlot;
 import net.labymod.api.configuration.loader.annotation.SpriteTexture;
 import net.labymod.api.configuration.loader.property.ConfigProperty;
 import net.labymod.api.configuration.settings.annotation.SettingSection;
+import rgbaddon.core.settings.sub.FriendTagSubSetting;
 import rgbaddon.core.settings.sub.TntTimerSubSetting;
 import java.awt.*;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.util.Objects;
 
 @ConfigName("settings")
 @SpriteTexture("sprite")
@@ -26,12 +35,18 @@ public class Configuration extends AddonConfig {
   @SwitchSetting
   private final ConfigProperty<Boolean> enabled = new ConfigProperty<>(true);
 
-  @SettingSection("Addon")
+  @SpriteSlot(x = 2, y = 6)
   @ButtonSetting
   public void discord(Setting setting) throws URISyntaxException, IOException {
     if (Desktop.isDesktopSupported() && Desktop.getDesktop().isSupported(Desktop.Action.BROWSE)) {
       Desktop.getDesktop().browse(new URI("https://discord.com/invite/J44t7xQFEX"));
     }
+    Notification.Builder builder = Notification.builder()
+        .title(net.labymod.api.client.component.Component.text(Objects.requireNonNull(I18n.getTranslation("notification.antiRage.title"))))
+        .text(Component.text(Objects.requireNonNull(I18n.getTranslation("notification.antiRage.text"))))
+        .icon(Icon.head(Laby.labyAPI().minecraft().getClientPlayer().getName()))
+        .type(Type.SYSTEM);
+    Laby.labyAPI().notificationController().push(builder.build());
   }
 
   @SettingSection("chat")
@@ -54,6 +69,8 @@ public class Configuration extends AddonConfig {
   @SpriteSlot(x = 2, y = 2)
   @SwitchSetting
   private final ConfigProperty<Boolean> fullbright = new ConfigProperty<>(true);
+  @SpriteSlot(x = 7, y = 2)
+  public FriendTagSubSetting friendTagSubSetting = new FriendTagSubSetting();
 
   @Override
   public ConfigProperty<Boolean> enabled() {
