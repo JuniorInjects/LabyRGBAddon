@@ -1,12 +1,12 @@
-package rgbaddon.core.imports;
+package rgbaddon.core.imports.tags;
 
 import net.labymod.api.client.entity.Entity;
 import net.labymod.api.client.entity.player.Player;
 import net.labymod.api.client.entity.player.tag.tags.IconTag;
 import net.labymod.api.client.gui.icon.Icon;
 import net.labymod.api.client.render.matrix.Stack;
-import net.labymod.api.client.resources.ResourceLocation;
 import rgbaddon.core.RgbAddon;
+import rgbaddon.core.imports.enums.AddonIconLocation;
 import java.awt.*;
 
 public class AddonTag extends IconTag {

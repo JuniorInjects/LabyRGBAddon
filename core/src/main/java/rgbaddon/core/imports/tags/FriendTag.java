@@ -1,4 +1,4 @@
-package rgbaddon.core.imports;
+package rgbaddon.core.imports.tags;
 
 import net.labymod.api.client.component.Component;
 import net.labymod.api.client.entity.Entity;
@@ -7,6 +7,8 @@ import net.labymod.api.client.entity.player.tag.tags.NameTag;
 import net.labymod.api.client.entity.player.tag.tags.NameTagBackground;
 import net.labymod.api.client.render.font.RenderableComponent;
 import rgbaddon.core.RgbAddon;
+import rgbaddon.core.imports.enums.NameTagLocation;
+
 import java.awt.*;
 
 public class FriendTag extends NameTag {

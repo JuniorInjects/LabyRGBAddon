@@ -6,7 +6,7 @@ import net.labymod.api.client.gui.screen.widget.widgets.input.dropdown.DropdownW
 import net.labymod.api.configuration.loader.Config;
 import net.labymod.api.configuration.loader.annotation.ParentSwitch;
 import net.labymod.api.configuration.loader.property.ConfigProperty;
-import rgbaddon.core.imports.NameTagLocation;
+import rgbaddon.core.imports.enums.NameTagLocation;
 
 public class FriendTagSubSetting extends Config {
 

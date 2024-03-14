@@ -7,15 +7,19 @@ import net.labymod.api.client.entity.player.tag.TagRegistry;
 import net.labymod.api.event.Subscribe;
 import net.labymod.api.labyconnect.LabyConnect;
 import net.labymod.api.labyconnect.protocol.model.friend.Friend;
-import rgbaddon.core.imports.AddonIconLocation;
-import rgbaddon.core.imports.AddonTag;
-import rgbaddon.core.imports.FriendTag;
-import rgbaddon.core.imports.NameTagLocation;
-import rgbaddon.core.imports.TNTTimeTag;
+import rgbaddon.core.imports.Chat;
+import rgbaddon.core.imports.DamageIndicator;
+import rgbaddon.core.imports.enums.AddonIconLocation;
+import rgbaddon.core.imports.tags.AddonTag;
+import rgbaddon.core.imports.tags.FriendTag;
+import rgbaddon.core.imports.enums.NameTagLocation;
+import rgbaddon.core.imports.tags.TNTTimeTag;
 import rgbaddon.core.listener.ChatListener;
 import net.labymod.api.addon.LabyAddon;
 import net.labymod.api.models.addon.annotation.AddonMain;
+import rgbaddon.core.listener.ChatReceiveListener;
 import rgbaddon.core.listener.ChatSendListener;
+import rgbaddon.core.listener.ServerJoinListener;
 import rgbaddon.core.listener.UpdateLightmapTextureEvent;
 import rgbaddon.core.widgets.NearbyWidget;
 import java.util.UUID;
@@ -23,15 +27,22 @@ import java.util.UUID;
 @AddonMain
 public class RgbAddon extends LabyAddon<Configuration> {
 
+  public Chat chat;
+
   @Override
   protected void enable() {
+    this.chat = new Chat(this);
+
     this.registerSettingCategory();
 
     this.registerListener(new ChatListener(this));
     this.registerListener(new ChatSendListener(this));
+    this.registerListener(new ServerJoinListener(this));
+    this.registerListener(new ChatReceiveListener(this));
 
     TagRegistry tagRegistry = this.labyAPI().tagRegistry();
 
+    new DamageIndicator().registerTags(this, tagRegistry);
     tagRegistry.register("tnttag", PositionType.ABOVE_NAME, new TNTTimeTag(this));
     for (PositionType positionType : PositionType.values()) {
       tagRegistry.registerBefore("badge", "friendtag", positionType,

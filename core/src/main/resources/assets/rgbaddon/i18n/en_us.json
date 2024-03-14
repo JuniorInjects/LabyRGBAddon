@@ -62,9 +62,6 @@
       "tntTimerSubSetting": {
         "name" : "TNT Timer",
         "description": "Display a timer above every tnt when it will explode.",
-        "enabled": {
-          "name": "Enabled"
-        },
         "colored": {
           "name": "colored"
         }
@@ -73,15 +70,61 @@
         "name": "Anti Chatclear",
         "description": "Removes empty lines from the chat."
       },
-      "stackSameMessage": {
+      "stackSameMessageSubSetting": {
         "name": "Stack same message",
-        "description": "stack same messages in chat"
+        "description": "stack same messages in chat",
+        "text": {
+          "name": "format",
+          "description": "use %amount% to get the amount of stacked messages"
+        },
+        "serverSwitchReset": {
+          "name": "server switch reset"
+        },
+        "amount": {
+          "name": "amount",
+          "description": "say when messages should be stacked"
+        }
       },
       "antiRage": {
         "name": "Anti rage",
         "description": "stop you from sending bad messages",
         "badWords": {
           "name": "Bad words"
+        }
+      },
+      "friendTagSubSetting": {
+        "name": "Friend Tag",
+        "format": {
+          "name": "tag"
+        },
+        "location": {
+          "name": "location"
+        },
+        "renderBackground": {
+          "name": "background"
+        }
+      },
+      "addonIconSubSetting": {
+        "name": "Addon Icon",
+        "description": "shows an Icon if a player uses the addon",
+        "location": {
+          "name": "location"
+        },
+        "size": {
+          "name": "size"
+        },
+        "customColor": {
+          "name": "use custom Color"
+        },
+        "iconColor": {
+          "name": "icon Color"
+        }
+      },
+      "damageIndicatorSubSetting": {
+        "name": "Damage Indicator",
+        "description": "displays the hp of player",
+        "displayType": {
+          "name": "display Type"
         }
       }
     },

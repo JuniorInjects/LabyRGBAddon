@@ -1,4 +1,4 @@
-package rgbaddon.core.imports;
+package rgbaddon.core.imports.tags;
 
 import java.text.DecimalFormat;
 import net.labymod.api.client.component.Component;

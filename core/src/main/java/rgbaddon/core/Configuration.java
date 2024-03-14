@@ -20,7 +20,9 @@ import net.labymod.api.configuration.loader.annotation.SpriteSlot;
 import net.labymod.api.configuration.loader.annotation.SpriteTexture;
 import net.labymod.api.configuration.loader.property.ConfigProperty;
 import net.labymod.api.configuration.settings.annotation.SettingSection;
+import rgbaddon.core.settings.sub.DamageIndicatorSubSetting;
 import rgbaddon.core.settings.sub.FriendTagSubSetting;
+import rgbaddon.core.settings.sub.StackSameMessageSubSetting;
 import rgbaddon.core.settings.sub.TntTimerSubSetting;
 import java.awt.*;
 import java.io.IOException;
@@ -59,7 +61,7 @@ public class Configuration extends AddonConfig {
   @SpriteSlot(x = 6, y = 2)
   private final ConfigProperty<Boolean> antiChatClear = new ConfigProperty<>(true);
   @SpriteSlot(y = 2)
-  private final ConfigProperty<Boolean> stackSameMessage = new ConfigProperty<>(true);
+  public StackSameMessageSubSetting stackSameMessageSubSetting = new StackSameMessageSubSetting();
   @SpriteSlot(x = 1, y = 1)
   @SwitchSetting
   public AntiRageSubSetting antiRage = new AntiRageSubSetting();
@@ -74,7 +76,8 @@ public class Configuration extends AddonConfig {
   public FriendTagSubSetting friendTagSubSetting = new FriendTagSubSetting();
   @SpriteSlot(y = 3)
   public AddonIconSubSetting addonIconSubSetting = new AddonIconSubSetting();
-
+  @SpriteSlot(x = 3, y = 2)
+  public DamageIndicatorSubSetting damageIndicatorSubSetting = new DamageIndicatorSubSetting();
 
   @Override
   public ConfigProperty<Boolean> enabled() {
@@ -83,10 +86,6 @@ public class Configuration extends AddonConfig {
 
   public boolean getAntiChatClear() {
     return this.antiChatClear.get();
-  }
-
-  public boolean getStackSameMessage() {
-    return this.stackSameMessage.get();
   }
 
   public boolean getFullbright() {

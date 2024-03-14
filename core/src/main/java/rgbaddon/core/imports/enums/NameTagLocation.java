@@ -1,4 +1,4 @@
-package rgbaddon.core.imports;
+package rgbaddon.core.imports.enums;
 
 import net.labymod.api.client.entity.player.tag.PositionType;
 
