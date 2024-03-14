@@ -9,6 +9,7 @@ import net.labymod.api.notification.Notification;
 import net.labymod.api.notification.Notification.Builder;
 import net.labymod.api.notification.Notification.Type;
 import net.labymod.api.util.I18n;
+import rgbaddon.core.settings.sub.AddonIconSubSetting;
 import rgbaddon.core.settings.sub.AntiRageSubSetting;
 import rgbaddon.core.settings.sub.ChatTimeSubSetting;
 import rgbaddon.core.settings.sub.CopyChatSubSetting;
@@ -71,6 +72,9 @@ public class Configuration extends AddonConfig {
   private final ConfigProperty<Boolean> fullbright = new ConfigProperty<>(true);
   @SpriteSlot(x = 7, y = 2)
   public FriendTagSubSetting friendTagSubSetting = new FriendTagSubSetting();
+  @SpriteSlot(y = 3)
+  public AddonIconSubSetting addonIconSubSetting = new AddonIconSubSetting();
+
 
   @Override
   public ConfigProperty<Boolean> enabled() {

@@ -1,20 +1,17 @@
 package rgbaddon.core.imports;
 
-import java.awt.*;
 import java.text.DecimalFormat;
 import net.labymod.api.client.component.Component;
 import net.labymod.api.client.component.format.NamedTextColor;
 import net.labymod.api.client.component.format.TextColor;
 import net.labymod.api.client.entity.Entity;
 import net.labymod.api.client.entity.item.PrimedTnt;
-import net.labymod.api.client.entity.player.tag.event.NameTagBackgroundRenderEvent;
 import net.labymod.api.client.entity.player.tag.tags.NameTag;
 import net.labymod.api.client.gfx.GFXBridge;
 import net.labymod.api.client.options.MinecraftOptions;
 import net.labymod.api.client.render.font.RenderableComponent;
 import net.labymod.api.client.render.matrix.Stack;
 import net.labymod.api.loader.platform.PlatformEnvironment;
-import net.labymod.api.util.ColorUtil;
 import net.labymod.api.util.math.MathHelper;
 import rgbaddon.core.RgbAddon;
 
