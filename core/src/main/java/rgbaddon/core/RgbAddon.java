@@ -9,6 +9,7 @@ import net.labymod.api.labyconnect.LabyConnect;
 import net.labymod.api.labyconnect.protocol.model.friend.Friend;
 import rgbaddon.core.imports.Chat;
 import rgbaddon.core.imports.DamageIndicator;
+import rgbaddon.core.imports.ItemPhysics;
 import rgbaddon.core.imports.enums.AddonIconLocation;
 import rgbaddon.core.imports.tags.AddonTag;
 import rgbaddon.core.imports.tags.FriendTag;
@@ -19,6 +20,7 @@ import net.labymod.api.addon.LabyAddon;
 import net.labymod.api.models.addon.annotation.AddonMain;
 import rgbaddon.core.listener.ChatReceiveListener;
 import rgbaddon.core.listener.ChatSendListener;
+import rgbaddon.core.listener.GameRenderListener;
 import rgbaddon.core.listener.ServerJoinListener;
 import rgbaddon.core.listener.UpdateLightmapTextureEvent;
 import rgbaddon.core.widgets.NearbyWidget;
@@ -28,10 +30,12 @@ import java.util.UUID;
 public class RgbAddon extends LabyAddon<Configuration> {
 
   public Chat chat;
+  public ItemPhysics itemPhysics;
 
   @Override
   protected void enable() {
     this.chat = new Chat(this);
+    this.itemPhysics = new ItemPhysics();
 
     this.registerSettingCategory();
 
@@ -39,6 +43,7 @@ public class RgbAddon extends LabyAddon<Configuration> {
     this.registerListener(new ChatSendListener(this));
     this.registerListener(new ServerJoinListener(this));
     this.registerListener(new ChatReceiveListener(this));
+    this.registerListener(new GameRenderListener(this));
 
     TagRegistry tagRegistry = this.labyAPI().tagRegistry();
 

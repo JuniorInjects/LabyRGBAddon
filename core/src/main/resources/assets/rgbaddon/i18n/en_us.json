@@ -126,6 +126,12 @@
         "displayType": {
           "name": "display Type"
         }
+      },
+      "itemPhysicsSubSetting": {
+        "name": "Item Physics",
+        "rotationSpeed": {
+          "name": "rotation speed"
+        }
       }
     },
     "hudWidget": {

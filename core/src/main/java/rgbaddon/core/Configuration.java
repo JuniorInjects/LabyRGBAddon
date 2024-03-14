@@ -22,6 +22,7 @@ import net.labymod.api.configuration.loader.property.ConfigProperty;
 import net.labymod.api.configuration.settings.annotation.SettingSection;
 import rgbaddon.core.settings.sub.DamageIndicatorSubSetting;
 import rgbaddon.core.settings.sub.FriendTagSubSetting;
+import rgbaddon.core.settings.sub.ItemPhysicsSubSetting;
 import rgbaddon.core.settings.sub.StackSameMessageSubSetting;
 import rgbaddon.core.settings.sub.TntTimerSubSetting;
 import java.awt.*;
@@ -78,6 +79,9 @@ public class Configuration extends AddonConfig {
   public AddonIconSubSetting addonIconSubSetting = new AddonIconSubSetting();
   @SpriteSlot(x = 3, y = 2)
   public DamageIndicatorSubSetting damageIndicatorSubSetting = new DamageIndicatorSubSetting();
+
+  @SettingSection("render")
+  public ItemPhysicsSubSetting itemPhysicsSubSetting = new ItemPhysicsSubSetting();
 
   @Override
   public ConfigProperty<Boolean> enabled() {
