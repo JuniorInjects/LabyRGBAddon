@@ -1,0 +1,156 @@
+{
+  "rgbaddon": {
+    "settings": {
+      "name": "RGBAddon",
+      "enabled": {
+        "name": "Aktivieren"
+      },
+      "discord": {
+        "name": "Klicke um den Discord beizutreten",
+        "text": "Beitreten"
+      },
+      "header": {
+        "chat": {
+          "name": "Chat"
+        },
+        "render": {
+          "name": "Rendern"
+        },
+        "addon": {
+          "name": "Zusatz"
+        },
+        "servers": {
+          "name": "Server"
+        }
+      },
+      "copyChatSubSetting": {
+        "name": "ChatKopie",
+        "description": "Kopieren Sie eine beliebige Nachricht aus dem Chat.",
+        "copyPlayerName": {
+          "name": "Namen kopieren"
+        },
+        "copyChatTime": {
+          "name": "Nachrichtenzeit kopieren"
+        }
+      },
+      "chatTime": {
+        "name": "Nachrichtenzeit",
+        "description": "Anzeige der aktuellen Uhrzeit vor jeder Nachricht im Chat.",
+        "useBrackets": {
+          "name": "Klammern"
+        },
+        "displaySecounds": {
+          "name": "Sekunden anzeigen"
+        },
+        "displayMinutes": {
+          "name": "Minuten anzeigen"
+        },
+        "displayHours": {
+          "name": "Stunden anzeigen"
+        },
+        "displayDay": {
+          "name": "Tag anzeigen"
+        },
+        "displayMonth": {
+          "name": "Monat anzeigen"
+        },
+        "displayYear": {
+          "name": "Jahr anzeigen"
+        }
+      },
+      "tntTimerSubSetting": {
+        "name" : "TNT-Explosionszähler",
+        "description": "Zeigen Sie einen Timer über jedem tnt an, wann es explodieren wird.",
+        "colored": {
+          "name": "farbig"
+        }
+      },
+      "stackSameMessageSubSetting": {
+        "name": "Gleiche Nachrichten stapeln",
+        "description": "gleiche Nachrichten im Chat stapeln.",
+        "text": {
+          "name": "Format",
+          "description": "Verwenden Sie %amount%, um die Anzahl der gestapelten Nachrichten zu ermitteln"
+        },
+        "serverSwitchReset": {
+          "name": "Serverschalter zurücksetzen"
+        },
+        "amount": {
+          "name": "Anzahl",
+          "description": "sagen, wann Nachrichten gestapelt werden sollen."
+        }
+      },
+      "antiRage": {
+        "name": "Anti-Wut",
+        "description": "Sie davon abhalten, schlechte Nachrichten zu senden.",
+        "badWords": {
+          "name": "Böse Worte"
+        }
+      },
+      "friendTagSubSetting": {
+        "name": "Freund-Tag",
+        "format": {
+          "name": "Tag"
+        },
+        "location": {
+          "name": "Position"
+        },
+        "renderBackground": {
+          "name": "Hintergrund"
+        }
+      },
+      "damageIndicatorSubSetting": {
+        "name": "Schadensindikator",
+        "description": "zeigt die Hp des Spielers an.",
+        "displayType": {
+          "name": "Anzeige Typ"
+        }
+      },
+      "ggCoinflipSubSetting": {
+        "name": "Griefergames Coinflip Bot",
+        "description": "dies ist ein automatisch spielender Bot für den griefergames /coinflip Befehl.",
+        "enabled": {
+          "name": "Aktivierung"
+        },
+        "keyBind": {
+          "name": "Start/Stopp-Taste"
+        },
+        "plus": {
+          "name": "plus Geld",
+          "description": "wie viel Geld du verdienen willst. z.B.: 1.000$"
+        },
+        "save": {
+          "name": "sichere Flips",
+          "description": "wie viele 1$ (sichere Flips) du machen willst."
+        },
+        "max": {
+          "name": "max Flip",
+          "description": "wie viel Geld du maximal setzen willst. z.B.: 1.000.000$"
+        },
+        "resetAfterMax": {
+          "name": "neustarten nach Max",
+          "description": "Willst du nach einer großen Pechsträhne weiter flippen?"
+        }
+      },
+      "openDiscord": {
+        "name": "Zwietracht (Discord)",
+        "text": "Öffnen"
+      },
+      "downloadLatest": {
+        "name": "Neueste Addon-Version herunterladen",
+        "text": "Herunterladen"
+      }
+    },
+    "hudWidget": {
+      "nearby": {
+        "name": "nearby Player",
+        "description": "displays all players nearby"
+      }
+    },
+    "messages": {
+      "antiRage": {
+        "name": "We stopped you from raging :)"
+      }
+    }
+  }
+}

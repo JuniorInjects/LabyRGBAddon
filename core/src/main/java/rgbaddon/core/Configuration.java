@@ -5,10 +5,12 @@ import net.labymod.api.client.component.Component;
 import net.labymod.api.client.gui.icon.Icon;
 import net.labymod.api.client.gui.screen.widget.widgets.input.ButtonWidget.ButtonSetting;
 import net.labymod.api.configuration.settings.Setting;
+import net.labymod.api.models.OperatingSystem;
 import net.labymod.api.notification.Notification;
 import net.labymod.api.notification.Notification.Builder;
 import net.labymod.api.notification.Notification.Type;
 import net.labymod.api.util.I18n;
+import net.labymod.api.util.MethodOrder;
 import rgbaddon.core.settings.sub.AddonIconSubSetting;
 import rgbaddon.core.settings.sub.AntiRageSubSetting;
 import rgbaddon.core.settings.sub.ChatTimeSubSetting;
@@ -22,6 +24,7 @@ import net.labymod.api.configuration.loader.property.ConfigProperty;
 import net.labymod.api.configuration.settings.annotation.SettingSection;
 import rgbaddon.core.settings.sub.DamageIndicatorSubSetting;
 import rgbaddon.core.settings.sub.FriendTagSubSetting;
+import rgbaddon.core.settings.sub.GGCoinflipSubSetting;
 import rgbaddon.core.settings.sub.ItemPhysicsSubSetting;
 import rgbaddon.core.settings.sub.StackSameMessageSubSetting;
 import rgbaddon.core.settings.sub.TntTimerSubSetting;
@@ -29,7 +32,11 @@ import java.awt.*;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
+import java.util.Scanner;
 
 @ConfigName("settings")
 @SpriteTexture("sprite")
@@ -39,18 +46,25 @@ public class Configuration extends AddonConfig {
   @SwitchSetting
   private final ConfigProperty<Boolean> enabled = new ConfigProperty<>(true);
 
-  @SpriteSlot(x = 2, y = 6)
+  @SpriteSlot(x = 3)
+  @MethodOrder(after = "enabled")
   @ButtonSetting
-  public void discord(Setting setting) throws URISyntaxException, IOException {
-    if (Desktop.isDesktopSupported() && Desktop.getDesktop().isSupported(Desktop.Action.BROWSE)) {
-      Desktop.getDesktop().browse(new URI("https://discord.com/invite/J44t7xQFEX"));
+  public void openDiscord() {
+    OperatingSystem.getPlatform().openUrl("https://discord.com/invite/J44t7xQFEX");
+  }
+
+  @SpriteSlot(x = 2, y = 3)
+  @MethodOrder(after = "openDiscord")
+  @ButtonSetting
+  public void downloadLatest() {
+    try {
+      final URL url = new URL("https://pastebin.com/raw/PMgJWKTk");
+      final Scanner s = new Scanner(url.openStream());
+      String finalUrl = s.nextLine();
+      System.out.println(finalUrl);
+      OperatingSystem.getPlatform().openUrl(finalUrl);
+    } catch (IOException ignored) {
     }
-    Notification.Builder builder = Notification.builder()
-        .title(net.labymod.api.client.component.Component.text(Objects.requireNonNull(I18n.getTranslation("notification.antiRage.title"))))
-        .text(Component.text(Objects.requireNonNull(I18n.getTranslation("notification.antiRage.text"))))
-        .icon(Icon.head(Laby.labyAPI().minecraft().getClientPlayer().getName()))
-        .type(Type.SYSTEM);
-    Laby.labyAPI().notificationController().push(builder.build());
   }
 
   @SettingSection("chat")
@@ -59,8 +73,8 @@ public class Configuration extends AddonConfig {
   @SpriteSlot(x = 1, y = 2)
   @SwitchSetting
   public ChatTimeSubSetting chatTime = new ChatTimeSubSetting();
-  @SpriteSlot(x = 6, y = 2)
-  private final ConfigProperty<Boolean> antiChatClear = new ConfigProperty<>(true);
+  //@SpriteSlot(x = 6, y = 2)
+  //private final ConfigProperty<Boolean> antiChatClear = new ConfigProperty<>(true);
   @SpriteSlot(y = 2)
   public StackSameMessageSubSetting stackSameMessageSubSetting = new StackSameMessageSubSetting();
   @SpriteSlot(x = 1, y = 1)
@@ -70,29 +84,30 @@ public class Configuration extends AddonConfig {
   @SettingSection("render")
   @SpriteSlot(x = 4, y = 2)
   public TntTimerSubSetting tntTimerSubSetting = new TntTimerSubSetting();
-  @SpriteSlot(x = 2, y = 2)
-  @SwitchSetting
-  private final ConfigProperty<Boolean> fullbright = new ConfigProperty<>(true);
+  //@SpriteSlot(x = 2, y = 2)
+  //@SwitchSetting
+  //private final ConfigProperty<Boolean> fullbright = new ConfigProperty<>(true);
   @SpriteSlot(x = 7, y = 2)
   public FriendTagSubSetting friendTagSubSetting = new FriendTagSubSetting();
-  @SpriteSlot(y = 3)
-  public AddonIconSubSetting addonIconSubSetting = new AddonIconSubSetting();
+  //@SpriteSlot(y = 3)
+  //public AddonIconSubSetting addonIconSubSetting = new AddonIconSubSetting();
   @SpriteSlot(x = 3, y = 2)
   public DamageIndicatorSubSetting damageIndicatorSubSetting = new DamageIndicatorSubSetting();
 
-  @SettingSection("render")
-  public ItemPhysicsSubSetting itemPhysicsSubSetting = new ItemPhysicsSubSetting();
+  @SettingSection("servers")
+  @SpriteSlot(x = 1, y = 3)
+  public GGCoinflipSubSetting ggCoinflipSubSetting = new GGCoinflipSubSetting();
 
   @Override
   public ConfigProperty<Boolean> enabled() {
     return this.enabled;
   }
 
-  public boolean getAntiChatClear() {
-    return this.antiChatClear.get();
-  }
+  //public boolean getAntiChatClear() {
+  //  return this.antiChatClear.get();
+  //}
 
-  public boolean getFullbright() {
-    return this.fullbright.get();
-  }
+  //public boolean getFullbright() {
+  //  return this.fullbright.get();
+  //}
 }

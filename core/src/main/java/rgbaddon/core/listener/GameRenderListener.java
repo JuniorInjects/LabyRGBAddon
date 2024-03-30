@@ -19,6 +19,6 @@ public class GameRenderListener {
       return;
     }
 
-    this.addon.itemPhysics.updateLastRenderTime();
+    //this.addon.itemPhysics.updateLastRenderTime();
   }
 }

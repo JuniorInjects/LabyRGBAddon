@@ -9,6 +9,7 @@ import net.labymod.api.client.component.format.NamedTextColor;
 import net.labymod.api.event.Subscribe;
 import net.labymod.api.event.client.chat.ChatReceiveEvent;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 
 public class ChatListener {
 
@@ -22,14 +23,13 @@ public class ChatListener {
 
   @Subscribe
   public void onChatReceive(ChatReceiveEvent event) {
-    /*
     ChatMessage chatMessage = event.chatMessage();
-    if(config.getAntiChatClear()) {
-      if(chatMessage.getOriginalPlainText().isEmpty() || chatMessage.getOriginalPlainText().isBlank()) {
-        event.setCancelled(true);
-        return;
-      }
-    }
+    //if(config.getAntiChatClear()) {
+    //  if(chatMessage.getOriginalPlainText().isEmpty() || chatMessage.getOriginalPlainText().isBlank()) {
+    //    event.setCancelled(true);
+    //    return;
+    //  }
+    //}
     if(config.copyChatSubSetting.isEnabled()) {
       if (chatMessage.getSenderProfile() != null) {
         String playerName = chatMessage.getSenderProfile().getUsername();
@@ -69,7 +69,6 @@ public class ChatListener {
         event.setMessage(textComponent);
       }
     }
-     */
   }
 
   private String getTime() {

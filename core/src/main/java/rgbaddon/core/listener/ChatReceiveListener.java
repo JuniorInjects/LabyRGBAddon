@@ -9,6 +9,7 @@ import net.labymod.api.event.client.chat.ChatReceiveEvent;
 import rgbaddon.core.Configuration;
 import rgbaddon.core.RgbAddon;
 import rgbaddon.core.imports.Chat;
+import rgbaddon.core.imports.GGCoinflip;
 import java.util.ArrayList;
 
 public class ChatReceiveListener {
@@ -24,19 +25,22 @@ public class ChatReceiveListener {
   }
 
   private int loosCount = 0;
+  private int lastFlip = 0;
 
   @Subscribe
   public void onChatReceive(ChatReceiveEvent event) {
     String message = event.chatMessage().getOriginalPlainText();
-    String[] list = {"2500", "5000", "10000", "20000", "40000", "80000", "160000", "320000", "640000", "1280000", "2560000"};
-    if(message.startsWith("[GrieferGames]")) {
+    if(message.startsWith("[GrieferGames]") && GGCoinflip.flipping) {
+      int plus = config.ggCoinflipSubSetting.getPlus();
+      int save = config.ggCoinflipSubSetting.getSave();
       if(message.contains("Du hast leider verloren und 1$ verloren.")) {
         loosCount++;
-        if(loosCount==5) {
+        if(loosCount==save) {
           new Thread(() -> {
               try {
                   Thread.sleep(2100);
-                  addon.labyAPI().minecraft().chatExecutor().chat("/coinflip " + list[loosCount-5]);
+                  addon.labyAPI().minecraft().chatExecutor().chat("/coinflip " + plus);
+                  lastFlip = plus;
               } catch (InterruptedException e) {
                   throw new RuntimeException(e);
               }
@@ -46,6 +50,7 @@ public class ChatReceiveListener {
             try {
               Thread.sleep(2100);
               addon.labyAPI().minecraft().chatExecutor().chat("/coinflip 1");
+              lastFlip = 1;
             } catch (InterruptedException e) {
               throw new RuntimeException(e);
             }
@@ -53,11 +58,26 @@ public class ChatReceiveListener {
         }
       }else if(message.contains("Du hast leider verloren und")) {
         loosCount++;
-        if(loosCount>=5) {
+        if(loosCount>=save) {
+          if(plus*((loosCount-save)*2)>config.ggCoinflipSubSetting.getMax()) {
+            if(config.ggCoinflipSubSetting.getResetAfterMax()) {
+              try {
+                Thread.sleep(2100);
+                addon.labyAPI().minecraft().chatExecutor().chat("/coinflip 1");
+                lastFlip = 1;
+                loosCount=0;
+              } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+              }
+            }else {
+              addon.labyAPI().minecraft().chatExecutor().displayClientMessage(Component.translatable("rgbaddon.messages.ggcoinflip.reset"));
+            }
+          }
           new Thread(() -> {
             try {
               Thread.sleep(2100);
-              addon.labyAPI().minecraft().chatExecutor().chat("/coinflip " + list[loosCount-5]);
+              addon.labyAPI().minecraft().chatExecutor().chat("/coinflip " + lastFlip*2);
+              lastFlip = lastFlip*2;
             } catch (InterruptedException e) {
               throw new RuntimeException(e);
             }
@@ -69,23 +89,27 @@ public class ChatReceiveListener {
           try {
             Thread.sleep(2100);
             addon.labyAPI().minecraft().chatExecutor().chat("/coinflip 1");
+            lastFlip = 1;
           } catch (InterruptedException e) {
             throw new RuntimeException(e);
           }
         }).start();
       }
     }
-    /*
-    ArrayList<ChatMessage> duplicates = chat.getDuplicateMessages().computeIfAbsent(message, key -> new ArrayList<>());
-    int count = chat.getDuplicateMessageCount().compute(message, (key, value) -> value == null ? 1 : value + 1);
 
-    if (count >= config.stackSameMessageSubSetting.amount()) {
-      duplicates.forEach(ChatMessage::delete);
-      duplicates.clear();
-      event.chatMessage().component().append(Component.text(chat.getDuplicateText(count)));
+    if(config.stackSameMessageSubSetting.isEnabled()) {
+      ArrayList<ChatMessage> duplicates = chat.getDuplicateMessages()
+          .computeIfAbsent(message, key -> new ArrayList<>());
+      int count = chat.getDuplicateMessageCount()
+          .compute(message, (key, value) -> value == null ? 1 : value + 1);
+
+      if (count >= config.stackSameMessageSubSetting.amount()) {
+        duplicates.forEach(ChatMessage::delete);
+        duplicates.clear();
+        event.chatMessage().component().append(Component.text(chat.getDuplicateText(count)));
+      }
+
+      duplicates.add(event.chatMessage());
     }
-
-    duplicates.add(event.chatMessage());
-    */
   }
 }

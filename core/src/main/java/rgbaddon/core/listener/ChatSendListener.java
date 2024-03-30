@@ -27,16 +27,11 @@ public class ChatSendListener {
   }
 
   @Subscribe
-  public void onChatReceive(ChatMessageSendEvent event) {
+  public void onChatSend(ChatMessageSendEvent event) {
     String[] word = config.antiRage.badWords().split("; ");
     for(String arg : word) {
       if(arg.toLowerCase().equals(event.getOriginalMessage())) { //  if Rage-word is equal cancel event
-        Notification.Builder builder = Notification.builder()
-            .title(Component.text(Objects.requireNonNull(I18n.getTranslation("notification.antiRage.title"))))
-            .text(Component.text(Objects.requireNonNull(I18n.getTranslation("notification.antiRage.text"))))
-            .icon(Icon.head(Laby.labyAPI().minecraft().getClientPlayer().getName()))
-            .type(Type.SYSTEM);
-        Laby.labyAPI().notificationController().push(builder.build());
+        addon.labyAPI().minecraft().chatExecutor().displayClientMessage(Component.translatable("rgbaddon.messages.antirage"));
         event.setCancelled(true);
         return;
       }

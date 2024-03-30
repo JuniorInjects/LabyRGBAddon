@@ -18,6 +18,9 @@
         },
         "addon": {
           "name": "Addon"
+        },
+        "servers": {
+          "name": "Server"
         }
       },
       "copyChatSubSetting": {
@@ -55,20 +58,12 @@
           "name": "Display year"
         }
       },
-      "fullbright": {
-        "name": "Fullbright",
-        "description": "Disable darkness."
-      },
       "tntTimerSubSetting": {
         "name" : "TNT Timer",
         "description": "Display a timer above every tnt when it will explode.",
         "colored": {
           "name": "colored"
         }
-      },
-      "antiChatClear": {
-        "name": "Anti Chatclear",
-        "description": "Removes empty lines from the chat."
       },
       "stackSameMessageSubSetting": {
         "name": "Stack same message",
@@ -104,22 +99,6 @@
           "name": "background"
         }
       },
-      "addonIconSubSetting": {
-        "name": "Addon Icon",
-        "description": "shows an Icon if a player uses the addon",
-        "location": {
-          "name": "location"
-        },
-        "size": {
-          "name": "size"
-        },
-        "customColor": {
-          "name": "use custom Color"
-        },
-        "iconColor": {
-          "name": "icon Color"
-        }
-      },
       "damageIndicatorSubSetting": {
         "name": "Damage Indicator",
         "description": "displays the hp of player",
@@ -127,11 +106,39 @@
           "name": "display Type"
         }
       },
-      "itemPhysicsSubSetting": {
-        "name": "Item Physics",
-        "rotationSpeed": {
-          "name": "rotation speed"
+      "ggCoinflipSubSetting": {
+        "name": "Griefergames Coinflip Bot",
+        "description": "this is a auto playing bot for the griefergames /coinflip command.",
+        "enabled": {
+          "name": "enabled"
+        },
+        "keyBind": {
+          "name": "start/stop key"
+        },
+        "plus": {
+          "name": "plus money",
+          "description": "how much money you wanna make plus. e.g.: 1.000$"
+        },
+        "save": {
+          "name": "save flips",
+          "description": "how many 1$ (save flips) you wanna do."
+        },
+        "max": {
+          "name": "max flip",
+          "description": "how much money you wanna flip max. e.g.: 1.000.000$"
+        },
+        "resetAfterMax": {
+          "name": "reset after Max",
+          "description": "do you want to go on flipping after big loosing streak?"
         }
+      },
+      "openDiscord": {
+        "name": "Discord",
+        "text": "Open"
+      },
+      "downloadLatest": {
+        "name": "Download Latest Addon Version",
+        "text": "Download"
       }
     },
     "hudWidget": {
@@ -140,14 +147,9 @@
         "description": "displays all players nearby"
       }
     },
-    "notification": {
+    "messages": {
       "antiRage": {
-        "title": {
-          "name": "Anti rage"
-        },
-        "text": {
-          "name": "we stopped you from raging"
-        }
+        "name": "We stopped you from raging :)"
       }
     }
   }

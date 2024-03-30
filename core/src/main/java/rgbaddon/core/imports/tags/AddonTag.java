@@ -22,7 +22,8 @@ public class AddonTag extends IconTag {
   }
 
   public static AddonTag create(RgbAddon addon, AddonIconLocation location) {
-    return new AddonTag(addon, location, addon.configuration().addonIconSubSetting.size());
+    //return new AddonTag(addon, location, addon.configuration().addonIconSubSetting.size());
+    return null;
   }
 
   @Override
@@ -30,14 +31,14 @@ public class AddonTag extends IconTag {
     if (!addon.configuration().enabled().get())
       return;
 
-    if (!addon.configuration().addonIconSubSetting.isEnabled())
-      return;
+    //if (!addon.configuration().addonIconSubSetting.isEnabled())
+      //return;
 
     if (!(livingEntity instanceof Player))
       return;
 
-    if (!addon.configuration().addonIconSubSetting.location().equals(location))
-      return;
+    //if (!addon.configuration().addonIconSubSetting.location().equals(location))
+      //return;
 
     this.labyAPI.renderPipeline().renderSeeThrough(entity, () -> {
       getIcon().render(stack, 0, 0, 8, 8, false, getColor());
@@ -46,11 +47,11 @@ public class AddonTag extends IconTag {
 
   @Override
   public boolean isVisible() {
-    if (!addon.configuration().addonIconSubSetting.isEnabled())
-      return false;
+    //if (!addon.configuration().addonIconSubSetting.isEnabled())
+    //  return false;
 
-    if (!addon.configuration().addonIconSubSetting.location().equals(location))
-      return false;
+    //if (!addon.configuration().addonIconSubSetting.location().equals(location))
+    //  return false;
 
     if (this.entity == null)
       return false;
@@ -62,11 +63,12 @@ public class AddonTag extends IconTag {
 
   @Override
   public int getColor() {
-    if (addon.configuration().addonIconSubSetting.rgbEnabled()) {
-      return rgbEffect().getRGB();
-    }
+    //if (addon.configuration().addonIconSubSetting.rgbEnabled()) {
+    //  return rgbEffect().getRGB();
+    //}
 
-    return addon.configuration().addonIconSubSetting.getColor();
+    //return addon.configuration().addonIconSubSetting.getColor();
+    return 0;
   }
 
   private Color rgbEffect() {
