@@ -22,6 +22,7 @@ public class ChatListener {
 
   @Subscribe
   public void onChatReceive(ChatReceiveEvent event) {
+    /*
     ChatMessage chatMessage = event.chatMessage();
     if(config.getAntiChatClear()) {
       if(chatMessage.getOriginalPlainText().isEmpty() || chatMessage.getOriginalPlainText().isBlank()) {
@@ -68,6 +69,7 @@ public class ChatListener {
         event.setMessage(textComponent);
       }
     }
+     */
   }
 
   private String getTime() {
