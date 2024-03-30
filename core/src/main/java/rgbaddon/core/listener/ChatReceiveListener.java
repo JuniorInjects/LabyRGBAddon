@@ -33,7 +33,16 @@ public class ChatReceiveListener {
     if(message.startsWith("[GrieferGames]") && GGCoinflip.flipping) {
       int plus = config.ggCoinflipSubSetting.getPlus();
       int save = config.ggCoinflipSubSetting.getSave();
-      if(message.contains("Du hast leider verloren und 1$ verloren.")) {
+      if(message.contains("Du hast nicht genug Geld.")) {
+        loosCount=0;
+        try {
+          Thread.sleep(2100);
+          addon.labyAPI().minecraft().chatExecutor().chat("/coinflip 1");
+          lastFlip = plus;
+        } catch (InterruptedException e) {
+          throw new RuntimeException(e);
+        }
+      }else if(message.contains("Du hast leider verloren und 1$ verloren.")) {
         loosCount++;
         if(loosCount==save) {
           new Thread(() -> {
@@ -59,7 +68,7 @@ public class ChatReceiveListener {
       }else if(message.contains("Du hast leider verloren und")) {
         loosCount++;
         if(loosCount>=save) {
-          if(plus*((loosCount-save)*2)>config.ggCoinflipSubSetting.getMax()) {
+          if(lastFlip*2>config.ggCoinflipSubSetting.getMax()) {
             if(config.ggCoinflipSubSetting.getResetAfterMax()) {
               try {
                 Thread.sleep(2100);
@@ -72,16 +81,17 @@ public class ChatReceiveListener {
             }else {
               addon.labyAPI().minecraft().chatExecutor().displayClientMessage(Component.translatable("rgbaddon.messages.ggcoinflip.reset"));
             }
+          }else {
+            new Thread(() -> {
+              try {
+                Thread.sleep(2100);
+                addon.labyAPI().minecraft().chatExecutor().chat("/coinflip " + lastFlip*2);
+                lastFlip = lastFlip*2;
+              } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+              }
+            }).start();
           }
-          new Thread(() -> {
-            try {
-              Thread.sleep(2100);
-              addon.labyAPI().minecraft().chatExecutor().chat("/coinflip " + lastFlip*2);
-              lastFlip = lastFlip*2;
-            } catch (InterruptedException e) {
-              throw new RuntimeException(e);
-            }
-          }).start();
         }
       }else if(message.contains("Herzlichen Glückwunsch! Du hast die Summe von")) {
         loosCount=0;
